@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": ["expo-router"],
+    "name": "coffee_app",
+    "slug": "coffee_app"
+  }
+}
