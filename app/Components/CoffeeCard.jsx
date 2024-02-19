@@ -16,6 +16,7 @@ import {
   Spacing,
 } from "../../theme/theme";
 import CustomIcon from "./CustomIcon";
+import BGIcon from "./BGIcon";
 
 const CARD_WIDTH = Dimensions.get("window").width * 0.32;
 
@@ -47,27 +48,25 @@ const CoffeeCard = ({
           <View style={styles.cardRatingContainer}>
             <CustomIcon
               name={"star"}
-              size={FontSize.size_18}
+              size={FontSize.size_16}
               color={Colors.primaryOrangeHex}
             />
-            <Text
-              style={{
-                color: Colors.primaryWhiteHex,
-                fontFamily: FontFamily.poppins_medium,
-              }}
-            >
-              {average_rating}
-            </Text>
+            <Text style={styles.cardRatingText}>{average_rating}</Text>
           </View>
         </ImageBackground>
-        <Text>{name}</Text>
-        <Text>{special_ingredient}</Text>
-        <View>
-          <Text>
-            $ <Text>{price}</Text>
+        <Text style={styles.cardTitle}>{name}</Text>
+        <Text style={styles.cardSubTitle}>{special_ingredient}</Text>
+        <View style={styles.cardFooterRow}>
+          <Text style={styles.cardPriceCurrency}>
+            $ <Text style={styles.cardPrice}>{price}</Text>
           </Text>
           <TouchableOpacity>
-            <Text>Hello</Text>
+            <BGIcon
+              color={Colors.primaryWhiteHex}
+              name={"plus"}
+              BGColor={Colors.primaryOrangeHex}
+              size={FontSize.size_10}
+            />
           </TouchableOpacity>
         </View>
       </LinearGradient>
@@ -78,7 +77,10 @@ const CoffeeCard = ({
 export default CoffeeCard;
 
 const styles = StyleSheet.create({
-  cardLinearGradientContainer: {},
+  cardLinearGradientContainer: {
+    padding: Spacing.space_10,
+    borderRadius: BorderRadius.radius_20,
+  },
   cardImageBG: {
     width: CARD_WIDTH,
     height: CARD_WIDTH,
@@ -86,5 +88,47 @@ const styles = StyleSheet.create({
     marginBottom: Spacing.space_15,
     overflow: "hidden",
   },
-  cardRatingContainer: {},
+  cardRatingContainer: {
+    flexDirection: "row",
+    backgroundColor: Colors.primaryBlackRGBA,
+    alignItems: "center",
+    justifyContent: "center",
+    glap: Spacing.space_10,
+    paddingHorizontal: Spacing.space_15,
+    position: "absolute",
+    top: 0,
+    right: 0,
+    borderBottomLeftRadius: BorderRadius.radius_20,
+  },
+  cardRatingText: {
+    marginLeft: 5,
+    color: Colors.primaryWhiteHex,
+    fontFamily: FontFamily.poppins_medium,
+    fontSize: FontSize.size_14,
+    lineHeight: 22,
+  },
+  cardFooterRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: Spacing.space_15,
+  },
+  cardTitle: {
+    color: Colors.primaryWhiteHex,
+    fontFamily: FontFamily.poppins_medium,
+    fontSize: FontSize.size_16,
+  },
+  cardSubTitle: {
+    color: Colors.primaryWhiteHex,
+    fontFamily: FontFamily.poppins_light,
+    fontSize: FontSize.size_10,
+  },
+  cardPrice: {
+    color: Colors.primaryWhiteHex,
+  },
+  cardPriceCurrency: {
+    color: Colors.primaryOrangeHex,
+    fontFamily: FontFamily.poppins_semibold,
+    fontSize: FontSize.size_18,
+  },
 });

@@ -1,12 +1,24 @@
-import { View, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { BorderRadius, Spacing } from "../../theme/theme";
+import CustomIcon from "./CustomIcon";
 
-const BGIcon = () => {
+const BGIcon = ({ name, color, size, BGColor }) => {
   return (
-    <View>
-      <Text>BGIcon</Text>
+    <View style={[styles.iconBG, { backgroundColor: BGColor }]}>
+      <CustomIcon name={name} color={color} size={size} />
     </View>
   );
 };
 
 export default BGIcon;
+
+const styles = StyleSheet.create({
+  iconBG: {
+    height: Spacing.space_30,
+    width: Spacing.space_30,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: BorderRadius.radius_10,
+  },
+});
